@@ -124,6 +124,7 @@ function Pointer({ vec = new THREE.Vector3(), isActive }: PointerProps) {
   );
 }
 
+
 const TechStack = () => {
   const [isActive, setIsActive] = useState(false);
 

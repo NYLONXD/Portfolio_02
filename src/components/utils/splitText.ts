@@ -24,6 +24,7 @@ export default function setSplitText() {
     if (para.anim) {
       para.anim.progress(1).kill();
       para.split?.revert();
+      
     }
 
     para.split = new SplitText(para, {

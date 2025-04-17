@@ -81,7 +81,7 @@ const Loading = ({ percent }: { percent: number }) => {
               <div className="loading-box"></div>
             </div>
             <div className="loading-content2">
-              <span>Welcome</span>
+              <span>Welcome.</span>
             </div>
           </div>
         </div>

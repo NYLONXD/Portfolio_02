@@ -13,5 +13,6 @@ video.addEventListener("ended", () => {
 
   //endListener =false then below code runs
 
+  
   console.log("Video has ended");
 });

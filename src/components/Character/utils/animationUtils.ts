@@ -108,11 +108,14 @@ const filterAnimationTracks = (
     boneNames.some((boneName) => track.name.includes(boneName))
   );
 
+
   return new THREE.AnimationClip(
     clip.name + "_filtered",
     clip.duration,
     filteredTracks
   );
+
 };
 
 export default setAnimations;
+

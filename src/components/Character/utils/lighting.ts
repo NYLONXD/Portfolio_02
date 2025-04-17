@@ -17,6 +17,7 @@ const setLighting = (scene: THREE.Scene) => {
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;
   scene.add(pointLight);
+  
 
   new RGBELoader()
     .setPath("/models/")

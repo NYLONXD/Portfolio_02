@@ -56,7 +56,9 @@ const setCharacter = (
     });
   };
 
+
   return { loadCharacter };
 };
+
 
 export default setCharacter;

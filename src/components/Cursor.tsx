@@ -51,4 +51,6 @@ const Cursor = () => {
   return <div className="cursor-main" ref={cursorRef}></div>;
 };
 
+
 export default Cursor;
+

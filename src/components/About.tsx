@@ -6,9 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic quis
-          dolores numquam iusto Ratione earum ducimus autem id iure pariatur
-          dolorum quae maiores.
+        I have 1 year of experience and a deep understanding of various tech skills such as JavaScript, React.JS,C++,Python.I am dedicated to keeping up with the latest trends and techniques in tech field, and I am constantly learning and expanding my skill set. I have a keen eye for detail and strive for perfection in every project I work on.
         </p>
       </div>
     </div>

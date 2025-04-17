@@ -55,4 +55,5 @@ export const typingBoneNames = [
   "heel02R",
 ];
 
+
 export const eyebrowBoneNames = ["eyebrow_L", "eyebrow_R"];

@@ -4,4 +4,5 @@ const CharacterModel = () => {
   return <Scene />;
 };
 
+
 export default CharacterModel;

@@ -17,6 +17,7 @@ export function setCharTimeline(
       scrub: true,
       invalidateOnRefresh: true,
     },
+    
   });
   const tl2 = gsap.timeline({
     scrollTrigger: {

@@ -21,7 +21,9 @@ export default function handleResize(
       trigger.kill();
     }
   });
-  
+
   setCharTimeline(character, camera);
   setAllTimeline();
+  console.log(workTrigger);
+  
 }

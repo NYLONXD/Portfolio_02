@@ -9,7 +9,7 @@ async function generateAESKey(password: string): Promise<CryptoKey> {
     ["encrypt", "decrypt"]
   );
 }
-
+console.log("this is the funny way to represent");
 
 export const decryptFile = async (
   url: string,

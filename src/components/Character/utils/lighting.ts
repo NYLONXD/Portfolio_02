@@ -17,7 +17,7 @@ const setLighting = (scene: THREE.Scene) => {
   pointLight.position.set(3, 12, 4);
   pointLight.castShadow = true;
   scene.add(pointLight);
-  
+
 
   new RGBELoader()
     .setPath("/models/")
@@ -39,7 +39,7 @@ const setLighting = (scene: THREE.Scene) => {
   const ease = "power2.inOut";
   function turnOnLights() {
     gsap.to(scene, {
-      environmentIntensity: 0.64,
+      environmentIntensity: 0.65,
       duration: duration,
       ease: ease,
     });

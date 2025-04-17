@@ -91,7 +91,7 @@ const createBoneAction = (
 ): THREE.AnimationAction | null => {
   const AnimationClip = THREE.AnimationClip.findByName(gltf.animations, clip);
   if (!AnimationClip) {
-    console.error(`Animation "${clip}" not found in GLTF file.`);
+    console.error(`Animation "${clip}" not able at this time.`);
     return null;
   }
 
@@ -107,6 +107,7 @@ const filterAnimationTracks = (
   const filteredTracks = clip.tracks.filter((track) =>
     boneNames.some((boneName) => track.name.includes(boneName))
   );
+  
 
 
   return new THREE.AnimationClip(

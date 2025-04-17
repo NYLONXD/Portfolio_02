@@ -5,4 +5,5 @@ const CharacterModel = () => {
 };
 
 
+
 export default CharacterModel;

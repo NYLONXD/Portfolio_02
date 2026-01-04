@@ -36,6 +36,18 @@ const Career = () => {
             Developed full-stack apps like a Travel Planner, Fitness & Wellness Tracker using React, Node.js, Express & MongoDB.
             </p>
           </div>
+           <div className="career-info-box">
+            <div className="career-info-in">
+              <div className="career-role">
+                <h4>Smart India Hackthon</h4>
+                <h5>Lovely Professional University</h5>
+              </div>
+              <h3>2025</h3>
+            </div>
+            <p>
+            Finalist in Smart India Hackathon 2025 and developed an innovative solution for real-world problems, showcasing teamwork and problem-solving skills. 
+            </p>
+          </div>
           <div className="career-info-box">
             <div className="career-info-in">
               <div className="career-role">

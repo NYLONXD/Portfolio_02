@@ -102,7 +102,7 @@ const WhatIDo = () => {
                 {/* <div className="what-tags">Three.js</div> */}
                 <div className="what-tags">Css</div>
                 <div className="what-tags">Next.js</div>
-                <div className="what-tags">PHP</div>
+                <div className="what-tags">Nest.Js</div>
                 <div className="what-tags">MySql</div>
               </div>
               <div className="what-arrow"></div>

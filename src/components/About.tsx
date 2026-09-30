@@ -1,16 +1,33 @@
-import "./styles/About.css";
+import { profile } from "../data/profile";
+import SectionHead from "./SectionHead";
 
-const About = () => {
+export default function About() {
   return (
-    <div className="about-section" id="about">
-      <div className="about-me">
-        <h3 className="title">About Me</h3>
-        <p className="para">
-        I have 1 year of experience and a deep understanding of various tech skills such as Node.js, React.JS,Nest.js,Next.js.I am dedicated to keeping up with the latest trends and techniques in tech field, and I am constantly learning and expanding my skill set. I have a keen eye for detail and strive for perfection in every project I work on.
-        </p>
+    <section id="about" className="sec" aria-labelledby="about-title">
+      <SectionHead id="about" cmd="about" title="About" />
+      <div className="about-grid">
+        <div className="about-bio">
+          {profile.bio.map((para) => (
+            <p key={para.slice(0, 16)}>{para}</p>
+          ))}
+        </div>
+        <figure className="file about-facts">
+          <figcaption className="file-name">himanshu.toml</figcaption>
+          <pre>
+            <code>
+              <span className="tok-section">[himanshu]</span>
+              {"\n"}
+              {profile.facts.map((f) => (
+                <span key={f.key}>
+                  <span className="tok-key">{f.key.toLowerCase().padEnd(10)}</span>={" "}
+                  <span className="tok-str">"{f.value}"</span>
+                  {"\n"}
+                </span>
+              ))}
+            </code>
+          </pre>
+        </figure>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default About;
+}

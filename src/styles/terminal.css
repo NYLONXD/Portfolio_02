@@ -1,0 +1,360 @@
+.term {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  background: var(--glass);
+  box-shadow:
+    inset 0 0 80px rgb(0 0 0 / 0.35),
+    0 0 0 1px var(--sunk),
+    0 30px 80px -40px var(--glow);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  text-shadow: 0 0 0.45em var(--glow);
+  overflow: hidden;
+}
+
+html[data-theme="paper"] .term {
+  box-shadow: 0 1px 0 var(--rule);
+}
+
+.term-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.45rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--sunk);
+  color: var(--dim);
+  font-size: 0.75rem;
+  text-shadow: none;
+}
+
+.term-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.term-close {
+  padding: 0 0.4rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: none;
+  color: var(--dim);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.term-close:hover {
+  color: var(--phosphor);
+  border-color: var(--phosphor);
+}
+
+.term-body {
+  flex: 1;
+  height: 21rem;
+  padding: 1rem 1.1rem 1.25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  cursor: text;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+
+.term-console .term-body {
+  height: auto;
+}
+
+.t-line {
+  margin-bottom: 0.65rem;
+  overflow-wrap: anywhere;
+}
+
+.t-line p {
+  margin: 0 0 0.35rem;
+}
+
+.t-line p:last-child {
+  margin-bottom: 0;
+}
+
+.t-welcome {
+  margin-bottom: 1rem;
+}
+
+.t-prompt {
+  color: var(--phosphor);
+  white-space: nowrap;
+}
+
+.t-dim {
+  color: var(--dim);
+}
+
+.t-hi {
+  color: var(--phosphor);
+}
+
+.t-err {
+  color: var(--err);
+}
+
+.t-indent {
+  padding-left: 2ch;
+}
+
+.t-block {
+  max-width: 72ch;
+}
+
+/* Clickable command: runs itself. */
+.t-cmd {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--phosphor);
+  text-decoration: underline dotted;
+  text-underline-offset: 0.25em;
+  text-shadow: inherit;
+  cursor: pointer;
+}
+
+.t-cmd:hover {
+  background: var(--phosphor);
+  color: var(--tube);
+  text-decoration: none;
+}
+
+.t-list,
+.t-bullets,
+.t-inline,
+.t-history {
+  margin: 0 0 0.35rem;
+  padding: 0;
+  list-style: none;
+}
+
+.t-list li {
+  display: grid;
+  grid-template-columns: minmax(9ch, max-content) 1fr;
+  gap: 0 2ch;
+}
+
+.t-help li {
+  grid-template-columns: 18ch 1fr;
+}
+
+.t-bullets li {
+  position: relative;
+  padding-left: 2ch;
+}
+
+.t-bullets li::before {
+  content: "-";
+  position: absolute;
+  left: 0;
+  color: var(--dim);
+}
+
+.t-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 2.5ch;
+}
+
+.t-history {
+  counter-reset: h;
+}
+
+.t-history li::before {
+  counter-increment: h;
+  content: counter(h) "  ";
+  color: var(--dim);
+}
+
+.t-key {
+  color: var(--dim);
+}
+
+.t-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2ch;
+}
+
+.t-finger {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(22ch, 1fr));
+  gap: 0 2ch;
+  margin: 0 0 0.35rem;
+}
+
+.t-finger div {
+  display: flex;
+  gap: 1ch;
+}
+
+.t-finger dt {
+  color: var(--dim);
+  white-space: nowrap;
+}
+
+.t-finger dd {
+  margin: 0;
+}
+
+/* Input: a real <input> sits invisibly over a mirror that draws the block cursor. */
+.t-inputline {
+  display: flex;
+  gap: 1ch;
+  align-items: baseline;
+}
+
+.t-field {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.t-mirror {
+  display: block;
+  min-height: 1.6em;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.t-field input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: transparent;
+  caret-color: transparent;
+  font: inherit;
+  line-height: inherit;
+}
+
+.t-caret {
+  outline: 1px solid var(--phosphor);
+  outline-offset: -1px;
+}
+
+.term[data-focused] .t-caret {
+  outline: 0;
+  background: var(--phosphor);
+  color: var(--tube);
+  animation: blink 1.06s steps(1) infinite;
+}
+
+.term[data-focused] {
+  border-color: color-mix(in srgb, var(--phosphor) 45%, var(--rule));
+}
+
+@keyframes blink {
+  50% {
+    background: transparent;
+    color: inherit;
+  }
+}
+
+/* Shared outputs, also used full-size on the page. */
+.neofetch {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 1.25rem 3ch;
+  align-items: start;
+}
+
+.neofetch-logo {
+  margin: 0;
+  color: var(--phosphor);
+  font: 0.62rem/1.12 var(--mono);
+  text-shadow: 0 0 0.5em var(--glow);
+}
+
+.neofetch-info {
+  margin: 0;
+}
+
+.neofetch-info > div {
+  display: grid;
+  grid-template-columns: 10ch 1fr;
+  gap: 1ch;
+}
+
+.neofetch-info dt {
+  color: var(--phosphor);
+  font-weight: 600;
+}
+
+.neofetch-info dt::after {
+  content: ":";
+}
+
+.neofetch-info dd {
+  margin: 0;
+}
+
+.neofetch-title {
+  margin-bottom: 0.25rem;
+}
+
+.neofetch-info .neofetch-title {
+  display: block;
+}
+
+.neofetch-title dd::after {
+  content: "";
+  display: block;
+  width: 16ch;
+  margin-top: 0.2rem;
+  border-top: 1px dashed var(--dim);
+}
+
+.neofetch-title b {
+  color: var(--phosphor);
+}
+
+.neofetch-palette {
+  display: flex !important;
+  gap: 0;
+  margin-top: 0.75rem;
+}
+
+.neofetch-palette span {
+  width: 3ch;
+  height: 1.1em;
+}
+
+[data-swatch="amber"] {
+  background: #ffb23f;
+}
+[data-swatch="green"] {
+  background: #52ff8f;
+}
+[data-swatch="paper"] {
+  background: #f3f5ee;
+}
+[data-swatch="text"] {
+  background: var(--text);
+}
+[data-swatch="dim"] {
+  background: var(--dim);
+}
+
+@media (max-width: 560px) {
+  .term {
+    font-size: 0.875rem;
+  }
+  .t-list li {
+    grid-template-columns: 1fr;
+  }
+  .neofetch {
+    grid-template-columns: 1fr;
+  }
+}

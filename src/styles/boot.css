@@ -1,0 +1,64 @@
+/* Only shown when the inline script in index.html sets data-boot (first visit this session). */
+html:not([data-boot]) .boot {
+  display: none;
+}
+
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  padding: clamp(1.5rem, 6vh, 4rem) var(--gutter);
+  background: var(--tube);
+  color: var(--text);
+  text-shadow: 0 0 0.45em var(--glow);
+  transform-origin: 50% 50%;
+  animation: boot-out 0.3s cubic-bezier(0.7, 0, 0.8, 0.4) 0.85s forwards;
+}
+
+.boot-text {
+  margin: 0;
+  font: 0.9375rem/1.75 var(--mono);
+  white-space: pre-wrap;
+}
+
+.boot-text span {
+  opacity: 0;
+  animation: boot-line 0.01s steps(1) calc(0.08s + var(--i) * 0.11s) forwards;
+}
+
+.boot-text span:first-child {
+  color: var(--phosphor);
+}
+
+.boot-text span:last-child::after {
+  content: " ";
+  display: inline-block;
+  width: 1ch;
+  margin-left: 0.5ch;
+  background: var(--phosphor);
+}
+
+@keyframes boot-line {
+  to {
+    opacity: 1;
+  }
+}
+
+/* The picture collapses to a bright line and winks out, like a CRT switching modes. */
+@keyframes boot-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  55% {
+    transform: scale(1, 0.004);
+    background: var(--text);
+    box-shadow: 0 0 2rem var(--phosphor);
+  }
+  100% {
+    transform: scale(0, 0.004);
+    background: var(--text);
+    visibility: hidden;
+  }
+}

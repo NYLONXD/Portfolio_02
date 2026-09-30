@@ -1,0 +1,59 @@
+.contact-lede {
+  max-width: 56ch;
+  font-size: 1.125rem;
+}
+
+.contact-mail {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin: clamp(2rem, 5vw, 3rem) 0;
+}
+
+.contact-address {
+  font-family: var(--display);
+  /* ~12.5em wide: fit the address on one line down to phone widths. */
+  font-size: min(calc((100vw - 2 * var(--gutter)) / 12.5), 5.75rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--phosphor);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.12em;
+  overflow-wrap: anywhere;
+}
+
+.contact-address:hover {
+  color: var(--phosphor);
+  text-decoration-thickness: 0.06em;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-links a {
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.contact-links a::before {
+  content: "[ ";
+  color: var(--dim);
+}
+
+.contact-links a::after {
+  content: " ]";
+  color: var(--dim);
+}
+
+.contact-links a:hover {
+  text-decoration: underline;
+}

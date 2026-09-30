@@ -1,73 +1,55 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
-import "./styles/Contact.css";
+import { useState } from "react";
+import { links, profile } from "../data/profile";
+import SectionHead from "./SectionHead";
+import "../styles/contact.css";
 
-const Contact = () => {
+export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.location.href = `mailto:${profile.email}`;
+    }
+  };
+
   return (
-    <div className="contact-section section-container" id="contact">
-      <div className="contact-container">
-        <h3>Contact</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h4>Email</h4>
-            <p>
-              <a href="mailto:example@mail.com" data-cursor="disable">
-                Himanshujha202005@mail.com
-              </a>
-            </p>
-            <h4>Phone</h4>
-            <p>
-              <a href="tel:+919920782622" data-cursor="disable">
-                +91 89203 50588
-              </a>
-            </p>
-          </div>
-          <div className="contact-box">
-            <h4>Social</h4>
-            <a
-              href="https://github.com/NYLONXD"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Github <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/himanshu-jha-nylonxd"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Linkedin <MdArrowOutward />
-            </a>
-            <a
-              href="https://x.com/Nylonxd"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Twitter <MdArrowOutward />
-            </a>
-            <a
-              href="https://www.instagram.com/himanshu_igl/"
-              target="_blank"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Instagram <MdArrowOutward />
-            </a>
-          </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by <span>Himanshu Jha</span>
-            </h2>
-            <h5>
-              <MdCopyright /> 2025
-            </h5>
-          </div>
-        </div>
+    <section id="contact" className="sec contact" aria-labelledby="contact-title">
+      <SectionHead id="contact" cmd="contact" title="Contact" />
+      <p className="contact-lede">
+        I'm looking for backend internships and I'm happy to talk about Rust, real-time systems or
+        anything I've built. Email is the fastest way to reach me.
+      </p>
+      <div className="contact-mail">
+        <a href={`mailto:${profile.email}`} className="contact-address">
+          {profile.email.replace(/@.*/, "")}
+          <wbr />
+          {profile.email.replace(/^[^@]*/, "")}
+        </a>
+        <button type="button" className="btn btn-ghost" onClick={copy}>
+          {copied ? "Copied" : "Copy address"}
+        </button>
+        <span className="sr-only" aria-live="polite">
+          {copied ? "Email address copied" : ""}
+        </span>
       </div>
-    </div>
+      <ul className="contact-links">
+        {links.map((l) => (
+          <li key={l.href}>
+            <a href={l.href} target="_blank" rel="noreferrer">
+              {l.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href={profile.resume} target="_blank" rel="noreferrer">
+            Résumé (PDF)
+          </a>
+        </li>
+      </ul>
+    </section>
   );
-};
-
-export default Contact;
+}

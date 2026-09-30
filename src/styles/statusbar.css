@@ -1,0 +1,107 @@
+/* A tmux status line pinned to the bottom of the screen, like the real thing. */
+.statusbar {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 70;
+  display: flex;
+  align-items: stretch;
+  height: var(--bar-h);
+  background: var(--phosphor);
+  color: var(--tube);
+  font-size: 0.8125rem;
+  line-height: var(--bar-h);
+  white-space: nowrap;
+}
+
+.statusbar a,
+.statusbar button {
+  color: inherit;
+  text-decoration: none;
+}
+
+.statusbar-session {
+  padding: 0 0.9rem;
+  font-weight: 600;
+}
+
+.statusbar nav {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.statusbar nav::-webkit-scrollbar {
+  display: none;
+}
+
+.statusbar-windows {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.statusbar-windows a {
+  display: block;
+  padding: 0 0.7rem;
+}
+
+.statusbar-windows a:hover {
+  text-decoration: underline;
+}
+
+.statusbar-windows a[aria-current] {
+  background: var(--tube);
+  color: var(--phosphor);
+  font-weight: 600;
+}
+
+.statusbar-flag {
+  display: inline-block;
+  width: 1ch;
+}
+
+.statusbar-right {
+  display: flex;
+}
+
+.statusbar-theme {
+  padding: 0 0.9rem;
+  border: 0;
+  border-left: 1px solid color-mix(in srgb, var(--tube) 35%, transparent);
+  background: none;
+  cursor: pointer;
+}
+
+.statusbar-theme:hover {
+  background: var(--tube);
+  color: var(--phosphor);
+}
+
+.statusbar-clock {
+  padding: 0 0.9rem;
+  border-left: 1px solid color-mix(in srgb, var(--tube) 35%, transparent);
+}
+
+.statusbar :focus-visible {
+  outline: 2px solid var(--tube);
+  outline-offset: -3px;
+}
+
+@media (max-width: 720px) {
+  .statusbar-session,
+  .statusbar-clock,
+  .statusbar-index {
+    display: none;
+  }
+  .statusbar {
+    font-size: 0.75rem;
+  }
+  .statusbar-windows a {
+    padding: 0 0.45rem;
+  }
+  .statusbar-theme {
+    padding: 0 0.6rem;
+  }
+}

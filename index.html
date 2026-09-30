@@ -1,15 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <!-- <link rel="icon" type="image/svg+xml" href="/" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Himanshu Jha - Web Developer </title>
+    <title>Himanshu Jha: backend-first full-stack developer</title>
+    <meta
+      name="description"
+      content="Himanshu Jha builds command-line tools, real-time systems and encrypted software: EnvByte, TrackEdge, beam and more. Open to backend internships."
+    />
+    <meta name="theme-color" content="#06100a" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Himanshu Jha: backend-first full-stack developer" />
+    <meta
+      property="og:description"
+      content="CLIs, real-time systems and software that keeps secrets secret. Type help."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@Nylonxd" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2306100a'/%3E%3Cpath d='M8 10l6 6-6 6' stroke='%2352ff8f' stroke-width='3' fill='none'/%3E%3Crect x='16' y='20' width='9' height='3' fill='%2352ff8f'/%3E%3C/svg%3E"
+    />
+    <link rel="preload" href="/fonts/big-shoulders-display.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/plex-mono-400.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      // Runs before first paint: restore the saved theme, and play the boot screen
+      // once per session unless the visitor prefers reduced motion.
+      (function () {
+        var root = document.documentElement;
+        try {
+          var theme = localStorage.getItem("hj-theme");
+          if (theme === "amber" || theme === "green" || theme === "paper") root.dataset.theme = theme;
+          if (localStorage.getItem("hj-crt") === "off") root.dataset.crt = "off";
+        } catch (e) {}
+        try {
+          var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+          if (!reduce && !sessionStorage.getItem("hj-booted")) {
+            root.dataset.boot = "1";
+            sessionStorage.setItem("hj-booted", "1");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script> -->
   </body>
 </html>

@@ -100,6 +100,24 @@ html[data-theme="paper"] .phosphor::after {
   color: var(--phosphor);
 }
 
+/* Obvious way to the second photo; the file tabs above are easy to miss. */
+.photos-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0.75rem;
+  border-top: 1px solid var(--rule);
+  background: var(--sunk);
+  color: var(--dim);
+  font-size: 0.8125rem;
+}
+
+.photos-next {
+  padding: 0.55rem 0.85rem;
+  font-size: 0.8125rem;
+}
+
 .photos-color::before {
   content: "[ ] ";
 }

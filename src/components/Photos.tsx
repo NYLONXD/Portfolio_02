@@ -34,6 +34,7 @@ export function PhosphorImage({
 export default function Photos() {
   const [index, setIndex] = useState(0);
   const [color, setColor] = useState(false);
+  const next = (index + 1) % photos.length;
 
   return (
     <figure className="file photos">
@@ -66,6 +67,14 @@ export default function Photos() {
         sizes="(max-width: 900px) calc(100vw - 32px), 460px"
         lazy
       />
+      <div className="photos-foot">
+        <span aria-live="polite">
+          {index + 1} / {photos.length}
+        </span>
+        <button type="button" className="btn photos-next" onClick={() => setIndex(next)}>
+          Next photo: {photos[next].file}
+        </button>
+      </div>
     </figure>
   );
 }

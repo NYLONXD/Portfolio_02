@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { cycleTheme, usePrefs } from "../lib/prefs";
+import Palette from "./Palette";
 import "../styles/statusbar.css";
 
 const windows = [
@@ -20,7 +20,6 @@ const delhiTime = () =>
 
 /** Navigation styled as a tmux status line: the section you're reading is the active window. */
 export default function StatusBar() {
-  const { theme, crt } = usePrefs();
   const [active, setActive] = useState("top");
   const [time, setTime] = useState<string | null>(null);
 
@@ -68,15 +67,7 @@ export default function StatusBar() {
         </ol>
       </nav>
       <div className="statusbar-right">
-        <button
-          type="button"
-          className="statusbar-theme"
-          onClick={cycleTheme}
-          aria-label={`Theme: ${theme}. Switch theme`}
-        >
-          {theme}
-          {crt ? "" : " (flat)"}
-        </button>
+        <Palette />
         <span className="statusbar-clock" title="Local time in New Delhi">
           {time ? `Delhi ${time}` : "Delhi --:--"}
         </span>

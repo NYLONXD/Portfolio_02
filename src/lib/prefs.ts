@@ -1,12 +1,26 @@
 import { useSyncExternalStore } from "react";
 
-export const themes = ["green", "amber", "paper"] as const;
+// Keep in sync with the list in index.html's inline script and the blocks in global.css.
+export const themes = ["green", "amber", "cyan", "white", "red", "paper"] as const;
 export type Theme = (typeof themes)[number];
 
 export const themeInfo: Record<Theme, string> = {
   green: "P1 green phosphor",
   amber: "P3 amber phosphor",
+  cyan: "Cyan phosphor",
+  white: "P4 white phosphor",
+  red: "Red night-mode screen",
   paper: "Green-bar printout paper",
+};
+
+/** Each theme's own color (a CSS background), for pickers that show every option at once. */
+export const themeSwatch: Record<Theme, string> = {
+  green: "#52ff8f",
+  amber: "#ffb23f",
+  cyan: "#4de8ff",
+  white: "#e8ebf0",
+  red: "#ff5e4d",
+  paper: "repeating-linear-gradient(#f3f5ee 0 3px, #bcdcb7 3px 6px)",
 };
 
 type Prefs = { theme: Theme; crt: boolean };
@@ -54,11 +68,6 @@ export function setTheme(theme: Theme) {
 export function setCrt(on: boolean) {
   update({ crt: on });
   store("hj-crt", on ? "on" : "off");
-}
-
-export function cycleTheme() {
-  const i = themes.indexOf(current.theme);
-  setTheme(themes[(i + 1) % themes.length]);
 }
 
 export function getPrefs() {

@@ -30,7 +30,8 @@
         var root = document.documentElement;
         try {
           var theme = localStorage.getItem("hj-theme");
-          if (theme === "amber" || theme === "green" || theme === "paper") root.dataset.theme = theme;
+          var themes = ["green", "amber", "cyan", "white", "red", "paper"];
+          if (themes.indexOf(theme) > -1) root.dataset.theme = theme;
           if (localStorage.getItem("hj-crt") === "off") root.dataset.crt = "off";
         } catch (e) {}
         try {

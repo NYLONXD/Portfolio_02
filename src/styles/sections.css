@@ -40,8 +40,23 @@
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(2rem, 6vw, 5rem);
+  grid-template-areas:
+    "bio photo"
+    "bio facts";
+  gap: 1.5rem clamp(2rem, 6vw, 5rem);
   align-items: start;
+}
+
+.about-bio {
+  grid-area: bio;
+}
+
+.about-photo {
+  grid-area: photo;
+}
+
+.about-facts {
+  grid-area: facts;
 }
 
 .about-bio p {
@@ -203,6 +218,13 @@
 @media (max-width: 900px) {
   .about-grid {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "photo"
+      "bio"
+      "facts";
+  }
+  .about-photo {
+    max-width: 24rem;
   }
 }
 

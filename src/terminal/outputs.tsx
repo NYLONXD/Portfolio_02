@@ -1,8 +1,9 @@
-import { profile, links } from "../data/profile";
+import { PhosphorImage } from "../components/Photos";
+import { links, Photo, profile } from "../data/profile";
 import { Project, projects } from "../data/projects";
 import { asciiLogo, stack } from "../data/stack";
 import { timeline } from "../data/timeline";
-import { themes } from "../lib/prefs";
+import { setTheme, themeInfo, themes, themeSwatch } from "../lib/prefs";
 import { Cmd } from "./TerminalProvider";
 
 export function Ext({ href, children }: { href: string; children: React.ReactNode }) {
@@ -20,31 +21,38 @@ export function Neofetch() {
       <pre className="neofetch-logo" aria-hidden="true">
         {asciiLogo.join("\n")}
       </pre>
-      <dl className="neofetch-info">
-        <div className="neofetch-title">
-          <dt className="sr-only">user</dt>
-          <dd>
-            <b>himanshu</b>@<b>nylonxd</b>
-          </dd>
-        </div>
-        {stack.map((row) => (
-          <div key={row.key}>
-            <dt>{row.key}</dt>
-            <dd>{row.items.join(", ")}</dd>
+      <div>
+        <dl className="neofetch-info">
+          <div className="neofetch-title">
+            <dt className="sr-only">user</dt>
+            <dd>
+              <b>himanshu</b>@<b>nylonxd</b>
+            </dd>
           </div>
-        ))}
-        <div>
-          <dt>Uptime</dt>
-          <dd>on GitHub since Nov 2023</dd>
-        </div>
-        <div className="neofetch-palette" aria-hidden="true">
-          {themes.map((t) => (
-            <span key={t} data-swatch={t} />
+          {stack.map((row) => (
+            <div key={row.key}>
+              <dt>{row.key}</dt>
+              <dd>{row.items.join(", ")}</dd>
+            </div>
           ))}
-          <span data-swatch="text" />
-          <span data-swatch="dim" />
+          <div>
+            <dt>Uptime</dt>
+            <dd>on GitHub since Nov 2023</dd>
+          </div>
+        </dl>
+        <div className="neofetch-palette" role="group" aria-label="Screen color">
+          {themes.map((t) => (
+            <button
+              key={t}
+              type="button"
+              style={{ background: themeSwatch[t] }}
+              aria-label={`${t}: ${themeInfo[t]}`}
+              title={themeInfo[t]}
+              onClick={() => setTheme(t)}
+            />
+          ))}
         </div>
-      </dl>
+      </div>
     </div>
   );
 }
@@ -159,6 +167,12 @@ export function Finger() {
           <dt>On since:</dt>
           <dd>Nov 2023 on github.com/NYLONXD</dd>
         </div>
+        <div>
+          <dt>Picture:</dt>
+          <dd>
+            <Cmd cmd="cat himanshu.jpg">himanshu.jpg</Cmd>
+          </dd>
+        </div>
       </dl>
       <p>Plan:</p>
       <p className="t-indent">
@@ -168,5 +182,16 @@ export function Finger() {
         Try <Cmd cmd="about" />, <Cmd cmd="projects" /> or <Cmd cmd="help" />.
       </p>
     </div>
+  );
+}
+
+export function PhotoOutput({ photo }: { photo: Photo }) {
+  return (
+    <figure className="t-photo">
+      <PhosphorImage photo={photo} sizes="240px" />
+      <figcaption>
+        {photo.file}. For real color, run <Cmd cmd="cd about" /> and tick [ ] color.
+      </figcaption>
+    </figure>
   );
 }

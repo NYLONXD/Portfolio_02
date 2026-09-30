@@ -69,6 +69,57 @@
   color-scheme: dark;
 }
 
+[data-theme="cyan"] {
+  --tube: #041013;
+  --glass: #08181c;
+  --sunk: #030b0d;
+  --rule: #17393f;
+  --dim: #69a2aa;
+  --text: #c9f3f7;
+  --phosphor: #4de8ff;
+  --glow: rgb(77 232 255 / 0.32);
+  --name-top: #e6fdff;
+  --name-bottom: #2fd3ee;
+  --err: #ff9a7a;
+  --ok: #4de8ff;
+  --scan: rgb(0 0 0 / 0.24);
+  color-scheme: dark;
+}
+
+[data-theme="white"] {
+  --tube: #0b0c0f;
+  --glass: #121419;
+  --sunk: #08090b;
+  --rule: #2c3039;
+  --dim: #9aa1ad;
+  --text: #e8ebf0;
+  --phosphor: #f4f6fb;
+  --glow: rgb(215 228 255 / 0.28);
+  --name-top: #ffffff;
+  --name-bottom: #aebbd3;
+  --err: #ff8a7a;
+  --ok: #9fe3a0;
+  --scan: rgb(0 0 0 / 0.26);
+  color-scheme: dark;
+}
+
+[data-theme="red"] {
+  --tube: #120606;
+  --glass: #1b0a0a;
+  --sunk: #0c0404;
+  --rule: #401b1a;
+  --dim: #b5746d;
+  --text: #ffd6cf;
+  --phosphor: #ff5e4d;
+  --glow: rgb(255 94 77 / 0.36);
+  --name-top: #ffe9e5;
+  --name-bottom: #ff4634;
+  --err: #ffd166;
+  --ok: #7ddc6b;
+  --scan: rgb(0 0 0 / 0.24);
+  color-scheme: dark;
+}
+
 /* Continuous-form printout: green bars, tractor-feed holes, ribbon ink. */
 [data-theme="paper"] {
   --tube: #f3f5ee;

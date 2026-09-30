@@ -1,8 +1,17 @@
 import { ReactNode } from "react";
-import { links, profile } from "../data/profile";
+import { findPhoto, links, photos, profile } from "../data/profile";
 import { findProject, projects } from "../data/projects";
 import { getPrefs, setCrt, setTheme, themeInfo, themes, Theme } from "../lib/prefs";
-import { ContactCard, Ext, Finger, GitLog, Neofetch, ProjectDetail, ProjectList } from "./outputs";
+import {
+  ContactCard,
+  Ext,
+  Finger,
+  GitLog,
+  Neofetch,
+  PhotoOutput,
+  ProjectDetail,
+  ProjectList,
+} from "./outputs";
 import { Cmd } from "./TerminalProvider";
 
 export type SectionId = "top" | "about" | "work" | "stack" | "log" | "contact";
@@ -37,7 +46,7 @@ const sections: Record<string, SectionId> = {
   contact: "contact",
 };
 
-const files = ["plan.txt", "resume.pdf"];
+const files = ["plan.txt", "resume.pdf", ...photos.map((p) => p.file)];
 
 const error = (text: ReactNode) => <span className="t-err">{text}</span>;
 
@@ -213,6 +222,8 @@ const commands: Command[] = [
     args: () => files,
     run: ([file], ctx) => {
       if (file === "plan.txt") return <Finger />;
+      const photo = findPhoto(file ?? "");
+      if (photo) return <PhotoOutput photo={photo} />;
       if (file === "resume.pdf") {
         ctx.open(profile.resume);
         return <span className="t-dim">resume.pdf is a PDF, so it opens in a new tab instead.</span>;
@@ -223,7 +234,7 @@ const commands: Command[] = [
   {
     name: "theme",
     usage: "[name]",
-    summary: "switch colors: green, amber or paper",
+    summary: "switch the screen color (run it alone to list them)",
     args: () => [...themes],
     run: ([name]) => {
       if (!name) {
@@ -243,7 +254,7 @@ const commands: Command[] = [
         );
       }
       if (!(themes as readonly string[]).includes(name)) {
-        return error(`theme: unknown theme "${name}". Choose green, amber or paper.`);
+        return error(`theme: unknown theme "${name}". Choose one of: ${themes.join(", ")}.`);
       }
       setTheme(name as Theme);
       return <span className="t-dim">Theme set to {name}.</span>;

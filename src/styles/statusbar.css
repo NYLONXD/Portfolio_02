@@ -66,17 +66,107 @@
   display: flex;
 }
 
-.statusbar-theme {
-  padding: 0 0.9rem;
-  border: 0;
-  border-left: 1px solid color-mix(in srgb, var(--tube) 35%, transparent);
-  background: none;
+/* Color chips sit on a dark segment so every color reads, whichever theme is on. */
+.palette {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0 0.8rem;
+  background: var(--tube);
+}
+
+.palette-label {
+  margin-right: 0.2rem;
+  color: var(--dim);
+}
+
+.palette-chip {
+  display: inline-block;
+  flex: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  padding: 0;
+  border: 1px solid rgb(0 0 0 / 0.5);
+  background: var(--chip);
   cursor: pointer;
 }
 
-.statusbar-theme:hover {
+.palette .palette-chip:hover {
+  transform: translateY(-1px);
+}
+
+.palette .palette-chip[aria-pressed="true"] {
+  outline: 1px solid var(--text);
+  outline-offset: 2px;
+}
+
+.palette .palette-chip:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.palette-menu {
+  display: none;
+  position: relative;
+}
+
+.palette-menu summary {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 100%;
+  padding: 0 0.7rem;
   background: var(--tube);
+  color: var(--text);
+  list-style: none;
+  cursor: pointer;
+}
+
+.palette-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.palette-menu summary::after {
+  content: "^";
+  color: var(--dim);
+}
+
+.palette-menu ul {
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  min-width: 9rem;
+  margin: 0 0 0.35rem;
+  padding: 0.35rem 0;
+  border: 1px solid var(--rule);
+  background: var(--glass);
+  list-style: none;
+  box-shadow: 0 -12px 40px rgb(0 0 0 / 0.45);
+}
+
+.palette-menu li button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.35rem 0.9rem;
+  border: 0;
+  background: none;
+  color: var(--text);
+  line-height: 1.6;
+  text-align: left;
+  cursor: pointer;
+}
+
+.palette-menu li button:hover,
+.palette-menu li button[aria-pressed="true"] {
+  background: var(--sunk);
   color: var(--phosphor);
+}
+
+.palette-menu li button[aria-pressed="true"]::after {
+  content: "*";
+  margin-left: auto;
 }
 
 .statusbar-clock {
@@ -101,7 +191,10 @@
   .statusbar-windows a {
     padding: 0 0.45rem;
   }
-  .statusbar-theme {
-    padding: 0 0.6rem;
+  .palette {
+    display: none;
+  }
+  .palette-menu {
+    display: block;
   }
 }

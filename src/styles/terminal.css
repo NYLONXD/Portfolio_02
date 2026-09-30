@@ -52,8 +52,10 @@ html[data-theme="paper"] .term {
   border-color: var(--phosphor);
 }
 
+/* Fixed height in the hero; fills the console. min-height: 0 stops tall output from stretching it. */
 .term-body {
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
   height: 21rem;
   padding: 1rem 1.1rem 1.25rem;
   overflow-y: auto;
@@ -64,7 +66,7 @@ html[data-theme="paper"] .term {
 }
 
 .term-console .term-body {
-  height: auto;
+  height: 0;
 }
 
 .t-line {
@@ -321,30 +323,20 @@ html[data-theme="paper"] .term {
 }
 
 .neofetch-palette {
-  display: flex !important;
-  gap: 0;
+  display: flex;
   margin-top: 0.75rem;
 }
 
-.neofetch-palette span {
+.neofetch-palette button {
   width: 3ch;
   height: 1.1em;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
 }
 
-[data-swatch="amber"] {
-  background: #ffb23f;
-}
-[data-swatch="green"] {
-  background: #52ff8f;
-}
-[data-swatch="paper"] {
-  background: #f3f5ee;
-}
-[data-swatch="text"] {
-  background: var(--text);
-}
-[data-swatch="dim"] {
-  background: var(--dim);
+.neofetch-palette button:hover {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 560px) {

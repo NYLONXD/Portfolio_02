@@ -1,4 +1,5 @@
 import { profile } from "../data/profile";
+import Photos from "./Photos";
 import SectionHead from "./SectionHead";
 
 export default function About() {
@@ -10,6 +11,9 @@ export default function About() {
           {profile.bio.map((para) => (
             <p key={para.slice(0, 16)}>{para}</p>
           ))}
+        </div>
+        <div className="about-photo">
+          <Photos />
         </div>
         <figure className="file about-facts">
           <figcaption className="file-name">himanshu.toml</figcaption>

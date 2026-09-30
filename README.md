@@ -28,10 +28,10 @@ The résumé is `public/Himanshu_Jha_Resume.pdf`. Replace the file and keep the 
 
 ## Terminal commands
 
-`help`, `about`, `projects`, `project <name>`, `stack`, `log`, `contact`, `resume`, `open <name>`, `cd <section>`, `theme [green|amber|paper]`, `crt [on|off]`, `clear`, plus a few easter eggs. Commands are defined in `src/terminal/commands.tsx`.
+`help`, `about`, `projects`, `project <name>`, `stack`, `log`, `contact`, `resume`, `open <name>`, `cd <section>`, `theme [green|amber|cyan|white|red|paper]`, `crt [on|off]`, `clear`, plus a few easter eggs. Commands are defined in `src/terminal/commands.tsx`.
 
 ## How it's put together
 
 - `index.html` has a tiny inline script that restores the saved theme before first paint and decides whether the boot screen plays (once per session, never with reduced motion).
 - `scripts/prerender.mjs` renders the app with `react-dom/server` and writes the HTML into `dist/index.html`; `src/main.tsx` hydrates it.
-- Themes are CSS variables in `src/styles/global.css`: `green` (default), `amber` and `paper` (green-bar printout).
+- Themes are CSS variables in `src/styles/global.css`: `green` (default), `amber`, `cyan`, `white`, `red` and `paper` (green-bar printout). Visitors pick one from the color chips in the bottom bar; to add a theme, add a block there and its name in `src/lib/prefs.ts` and `index.html`.

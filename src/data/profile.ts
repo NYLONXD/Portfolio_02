@@ -21,6 +21,24 @@ export const profile = {
   ],
 };
 
+export type Photo = { file: string; src: string; alt: string };
+
+/** Files live in public/photos as <src>-480.webp and <src>-800.webp, cropped to 4:5. */
+export const photos: Photo[] = [
+  {
+    file: "himanshu.jpg",
+    src: "/photos/himanshu",
+    alt: "Himanshu Jha smiling at the camera, wearing glasses, a white shirt and a blue tie",
+  },
+  {
+    file: "night-out.jpg",
+    src: "/photos/night-out",
+    alt: "Himanshu Jha on a lit street at night in a denim shirt, looking off to the side",
+  },
+];
+
+export const findPhoto = (file: string) => photos.find((p) => p.file === file);
+
 export type Link = { label: string; href: string; cmd: string };
 
 export const links: Link[] = [
